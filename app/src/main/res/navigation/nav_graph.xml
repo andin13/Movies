@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.example.movies.ui.movies.MoviesFragment"
+        android:label="MoviesFragment"
+        tools:layout="@layout/fragment_movies">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieFragment"
+            app:destination="@id/movieFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.example.movies.ui.movie.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie" >
+        <argument
+            android:name="movie"
+            app:argType="com.example.movies.data.entities.Movie"/>
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.movies.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_moviesFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/moviesFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_updateFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.movies.ui.update.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_moviesFragment"
+            app:popUpTo="@id/updateFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/moviesFragment" />
+    </fragment>
+</navigation>
